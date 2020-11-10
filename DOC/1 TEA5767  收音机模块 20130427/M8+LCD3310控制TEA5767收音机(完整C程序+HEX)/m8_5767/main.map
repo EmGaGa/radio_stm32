@@ -1,0 +1,392 @@
+Archive member included because of file (symbol)
+
+C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_mulsi3.o)
+                              main.o (__mulsi3)
+C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_udivmodqi4.o)
+                              main.o (__udivmodqi4)
+C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_udivmodsi4.o)
+                              main.o (__udivmodsi4)
+C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+senddata            0x5               main.o
+readdata            0x5               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+LOAD main.o
+LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4\libm.a
+LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a
+LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4\libc.a
+LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x65a
+ *(.vectors)
+ .vectors       0x00000000       0x26 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000026                . = ALIGN (0x2)
+ *(.init0)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000026        0xc C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+ *(.init3)
+ *(.init4)
+ .init4         0x00000032       0x16 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_copy_data.o)
+                0x00000032                __do_copy_data
+ .init4         0x00000048       0x10 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_clear_bss.o)
+                0x00000048                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000058        0x2 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+ *(.text)
+ .text          0x0000005a        0x2 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+                0x0000005a                __vector_1
+                0x0000005a                __vector_12
+                0x0000005a                __bad_interrupt
+                0x0000005a                __vector_6
+                0x0000005a                __vector_3
+                0x0000005a                __vector_11
+                0x0000005a                __vector_13
+                0x0000005a                __vector_17
+                0x0000005a                __vector_7
+                0x0000005a                __vector_5
+                0x0000005a                __vector_4
+                0x0000005a                __vector_9
+                0x0000005a                __vector_2
+                0x0000005a                __vector_15
+                0x0000005a                __vector_8
+                0x0000005a                __vector_14
+                0x0000005a                __vector_10
+                0x0000005a                __vector_16
+                0x0000005a                __vector_18
+ .text          0x0000005c      0x564 main.o
+                0x000000b0                LCD_clear
+                0x000001e8                lcd_inverse
+                0x0000024a                read5767
+                0x00000126                LCD_write_char
+                0x000001f0                lcd_no_inverse
+                0x000000d6                LCD_init
+                0x00000076                delay_1ms
+                0x0000005c                delay_1us
+                0x00000460                init
+                0x00000082                delay_nms
+                0x00000286                show_frequency
+                0x00000494                main
+                0x000001f8                delay_ms
+                0x00000098                LCD_write_byte
+                0x00000060                delay_nus
+                0x0000010e                LCD_set_XY
+                0x00000428                show_rx_power
+                0x000001ca                LCD_write_inverse_string
+                0x000001ac                LCD_write_english_string
+                0x0000020e                set5767
+                0x00000168                LCD_write_inverse_char
+                0x000005c0                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x000005c0       0x3e C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_mulsi3.o)
+                0x000005c0                __mulsi3
+ .text.libgcc   0x000005fe       0x18 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_udivmodqi4.o)
+                0x000005fe                __udivmodqi4
+ .text.libgcc   0x00000616       0x44 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_udivmodsi4.o)
+                0x00000616                __udivmodsi4
+                0x0000065a                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+                0x0000065a                _etext = .
+
+.data           0x00800060      0x288 load address 0x0000065a
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060      0x287 main.o
+                0x00800060                font6x8
+ *(.gnu.linkonce.d*)
+                0x008002e8                . = ALIGN (0x2)
+ *fill*         0x008002e7        0x1 00
+                0x008002e8                _edata = .
+                0x008002e8                PROVIDE (__data_end, .)
+
+.bss            0x008002e8        0xc
+                0x008002e8                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x008002e8        0x2 main.o
+                0x008002e9                search
+                0x008002e8                search_up
+ *(COMMON)
+ COMMON         0x008002ea        0xa main.o
+                                  0x0 (size before relaxing)
+                0x008002ea                senddata
+                0x008002ef                readdata
+                0x008002f4                PROVIDE (__bss_end, .)
+                0x0000065a                __data_load_start = LOADADDR (.data)
+                0x000008e2                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008002f4        0x0
+                0x008002f4                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008002f4                PROVIDE (__noinit_end, .)
+                0x008002f4                _end = .
+                0x008002f4                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0 load address 0x000008e2
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab           0x00000000      0xe04
+ *(.stab)
+ .stab          0x00000000      0xe04 main.o
+
+.stabstr        0x00000000      0x8e5
+ *(.stabstr)
+ .stabstr       0x00000000      0x8e5 main.o
+                                  0x0 (size before relaxing)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(main.elf elf32-avr)
+
+Cross Reference Table
+
+Symbol                                            File
+LCD_clear                                         main.o
+LCD_init                                          main.o
+LCD_set_XY                                        main.o
+LCD_write_byte                                    main.o
+LCD_write_char                                    main.o
+LCD_write_english_string                          main.o
+LCD_write_inverse_char                            main.o
+LCD_write_inverse_string                          main.o
+__bad_interrupt                                   C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__bss_end                                         C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_clear_bss.o)
+__bss_start                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_clear_bss.o)
+__data_end                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_copy_data.o)
+__data_load_start                                 C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_copy_data.o)
+__data_start                                      C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_copy_data.o)
+__do_clear_bss                                    C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_clear_bss.o)
+                                                  main.o
+__do_copy_data                                    C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_copy_data.o)
+                                                  main.o
+__heap_end                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__init                                            C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__mulsi3                                          C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_mulsi3.o)
+                                                  main.o
+__stack                                           C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+                                                  main.o
+__udivmodqi4                                      C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_udivmodqi4.o)
+                                                  main.o
+__udivmodsi4                                      C:/WinAVR/bin/../lib/gcc/avr/3.4.1/avr4\libgcc.a(_udivmodsi4.o)
+                                                  main.o
+__vector_1                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_10                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_11                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_12                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_13                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_14                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_15                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_16                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_17                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_18                                       C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_2                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_3                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_4                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_5                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_6                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_7                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_8                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_9                                        C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vector_default                                  C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+__vectors                                         C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+delay_1ms                                         main.o
+delay_1us                                         main.o
+delay_ms                                          main.o
+delay_nms                                         main.o
+delay_nus                                         main.o
+font6x8                                           main.o
+init                                              main.o
+lcd_inverse                                       main.o
+lcd_no_inverse                                    main.o
+main                                              main.o
+                                                  C:/WinAVR/bin/../lib/gcc/avr/3.4.1/../../../../avr/lib/avr4/crtm8.o
+read5767                                          main.o
+readdata                                          main.o
+search                                            main.o
+search_up                                         main.o
+senddata                                          main.o
+set5767                                           main.o
+show_frequency                                    main.o
+show_rx_power                                     main.o
