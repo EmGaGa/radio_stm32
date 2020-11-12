@@ -50,7 +50,7 @@ void tea5767_read(void)
     temp_h=radio_read_data[0];
     temp_h&=0x3f;
     pll=temp_h*256+temp_l;
-    get_tea5767_frequency();	
+    get_tea5767_frequency();
 }
 
 void get_tea5767_pll(void)
