@@ -4,7 +4,8 @@
 
 /* peripheral */
 #include "tea5767.h"
-
+#include "beep.h"
+#include "usart.h"
 
 #endif
 
