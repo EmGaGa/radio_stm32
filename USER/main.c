@@ -3,21 +3,22 @@
 
 int main(void)
 {	
+	LED_Init();
 	BEEP_Init();
-	tea5767_init();
 	uart_init(115200);
 	BEEP = 1;
 	rt_thread_mdelay(100);
 	BEEP = 0;
-	rt_thread_mdelay(100);;
-	tea5767_write();
-	rt_thread_mdelay(100);
-	tea5767_read();
+	rt_thread_mdelay(1000);;
 	while(1)
 	{
-		BEEP = 1;
+		LED0 = 1;
 		rt_thread_mdelay(1000);
-		BEEP = 0;
+		LED0 = 0;
+		rt_thread_mdelay(1000);
+		LED1 = 1;
+		rt_thread_mdelay(1000);
+		LED1 = 0;
 		rt_thread_mdelay(1000);
 	}
 }
