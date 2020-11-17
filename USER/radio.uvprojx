@@ -370,7 +370,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;.\peripheral</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;.\peripheral</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -442,11 +442,6 @@
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\sys\sys.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -607,14 +602,53 @@
               <FilePath>.\peripheral\beep.c</FilePath>
             </File>
             <File>
-              <FileName>usart1.c</FileName>
+              <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\peripheral\usart1.c</FilePath>
+              <FilePath>.\peripheral\led.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::RTOS</GroupName>
         </Group>
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components>
+      <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.3" condition="CMSIS Core with RTOS">
+        <package license="License.txt" name="RT-Thread" schemaVersion="1.4" supportContact="https://www.rt-thread.org" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.3"/>
+        <targetInfos>
+          <targetInfo name="Radio"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="shell" Cvendor="RealThread" Cversion="3.1.3" condition="shell">
+        <package license="License.txt" name="RT-Thread" schemaVersion="1.4" supportContact="https://www.rt-thread.org" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.3"/>
+        <targetInfos>
+          <targetInfo name="Radio"/>
+        </targetInfos>
+      </component>
+    </components>
+    <files>
+      <file attr="config" category="source" name="bsp\board.c" version="3.1.3">
+        <instance index="0">RTE\RTOS\board.c</instance>
+        <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.3" condition="CMSIS Core with RTOS"/>
+        <package license="License.txt" name="RT-Thread" schemaVersion="1.4" supportContact="https://www.rt-thread.org" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.3"/>
+        <targetInfos>
+          <targetInfo name="Radio"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="bsp\rtconfig.h" version="3.1.3">
+        <instance index="0">RTE\RTOS\rtconfig.h</instance>
+        <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.3" condition="CMSIS Core with RTOS"/>
+        <package license="License.txt" name="RT-Thread" schemaVersion="1.4" supportContact="https://www.rt-thread.org" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.3"/>
+        <targetInfos>
+          <targetInfo name="Radio"/>
+        </targetInfos>
+      </file>
+    </files>
+  </RTE>
 
 </Project>

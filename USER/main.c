@@ -5,7 +5,6 @@ int main(void)
 {	
 	LED_Init();
 	BEEP_Init();
-	uart_init(115200);
 	BEEP = 1;
 	rt_thread_mdelay(100);
 	BEEP = 0;

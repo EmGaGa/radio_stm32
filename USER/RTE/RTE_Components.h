@@ -10,5 +10,6 @@
 #ifndef RTE_COMPONENTS_H
 #define RTE_COMPONENTS_H
 
+#define RTE_USING_FINSH
 
 #endif /* RTE_COMPONENTS_H */
