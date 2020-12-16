@@ -237,7 +237,7 @@
             <NoZi1>0</NoZi1>
             <NoZi2>0</NoZi2>
             <NoZi3>0</NoZi3>
-            <NoZi4>0</NoZi4>
+            <NoZi4>1</NoZi4>
             <NoZi5>0</NoZi5>
             <Ro1Chk>0</Ro1Chk>
             <Ro2Chk>0</Ro2Chk>
@@ -370,7 +370,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;.\peripheral</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;.\peripheral;.\peripheral\OLED;D:\Keil_v5\ARM\PACK\RealThread\RT-Thread\3.1.3\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -433,11 +433,6 @@
         <Group>
           <GroupName>SYSTEM</GroupName>
           <Files>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
-            </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
@@ -587,9 +582,9 @@
           <GroupName>peripheral</GroupName>
           <Files>
             <File>
-              <FileName>tea5767.c</FileName>
+              <FileName>beep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\peripheral\tea5767.c</FilePath>
+              <FilePath>.\peripheral\beep.c</FilePath>
             </File>
             <File>
               <FileName>iic.c</FileName>
@@ -597,14 +592,29 @@
               <FilePath>.\peripheral\iic.c</FilePath>
             </File>
             <File>
-              <FileName>beep.c</FileName>
+              <FileName>tea5767.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\peripheral\beep.c</FilePath>
+              <FilePath>.\peripheral\tea5767.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\peripheral\OLED\oled.c</FilePath>
             </File>
             <File>
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\peripheral\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\peripheral\bsp_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\peripheral\key.c</FilePath>
             </File>
           </Files>
         </Group>

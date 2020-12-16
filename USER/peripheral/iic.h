@@ -25,5 +25,15 @@ void 	IIC_NAck(void);							//IIC不发送ACK信号
 void 	IIC_Write_One_Byte(u8 daddr,u8 addr,u8 data);
 u8		IIC_Read_One_Byte(u8 daddr,u8 addr);	  
 
+#if 0
+/* 硬件IIC */
+void	I2C1_GPIO_Configuration(void);
+void	I2C1_Configuration(void);
+void	I2C1_Init(void);
+void	I2C1_Write(u8 addr, u8 data);
+u8		I2C1_Read(u8 nAddr);
+#endif
+
+
 #endif
 

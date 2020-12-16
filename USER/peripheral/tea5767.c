@@ -2,7 +2,8 @@
 
 #define max_freq 108000
 #define min_freq 87500
-static unsigned char radio_write_data[5]={0x29,0xc2,0x20,0x11,0x00};        //要写入TEA5767的数据
+//static unsigned char radio_write_data[5]={0x29,0xc2,0x20,0x11,0x00};        //要写入TEA5767的数据
+static unsigned char radio_write_data[5]={0x2a,0xb6,0x40,0x17,0x40};        //要写入TEA5767的数据
 static unsigned char radio_read_data[5];        //TEA5767读出的状态
 //static unsigned int default_pll=0x29c2;//0x29f9;        //默认存台的pll,87.8MHz
 //unsigned int max_pll=0x339b;            //108MHz时的pll,
@@ -12,11 +13,16 @@ static unsigned long frequency = 0;
 
 void tea5767_init(void)
 {
+#if 1
 	IIC_Init();
+#else
+
+#endif
 }
 
 void tea5767_write(void)
 {
+#if 1
     unsigned char i;
     IIC_Start();
     IIC_Send_Byte(0xc0);        //TEA5767写地址
@@ -25,14 +31,22 @@ void tea5767_write(void)
         for(i=0;i<5;i++)
         {
             IIC_Send_Byte(radio_write_data[i]);
-            IIC_Ack();
+            if(IIC_Wait_Ack())
+			{
+				printf("write buffer failed. \r\n");
+				break;
+			}
         }
     }
     IIC_Stop(); 
+#else
+
+#endif
 }
 
 void tea5767_read(void)
 {
+#if 1
     unsigned char i;
     unsigned char temp_l,temp_h;
     pll=0;
@@ -42,29 +56,39 @@ void tea5767_read(void)
     {
         for(i=0;i<5;i++)
         {
-            radio_read_data[i]=IIC_Read_Byte(1);
+            radio_read_data[i]=(i==4)?IIC_Read_Byte(0):IIC_Read_Byte(1);
         }
+		IIC_Stop();
     }
-    IIC_Stop();
+	else
+    	IIC_Stop();
     temp_l=radio_read_data[1];
     temp_h=radio_read_data[0];
     temp_h&=0x3f;
-    pll=temp_h*256+temp_l;
+    pll=temp_h*256+temp_l+1;
     get_tea5767_frequency();
+#else
+
+#endif
 }
 
 void get_tea5767_pll(void)
 {
+#if 1
     unsigned char hlsi;
     hlsi=radio_write_data[2]&0x10;
     if (hlsi)
         pll=(unsigned int)((float)((frequency+225)*4)/(float)32.768);    //频率单位:k
     else
         pll=(unsigned int)((float)((frequency-225)*4)/(float)32.768);    //频率单位:k	
+#else
+
+#endif
 }
 
 void get_tea5767_frequency(void)
 {
+#if 1
     unsigned char hlsi;
     unsigned int npll=0;
     npll=pll;
@@ -73,10 +97,14 @@ void get_tea5767_frequency(void)
         frequency=(unsigned long)((float)(npll)*(float)8.192-225);    //频率单位:KHz
     else
         frequency=(unsigned long)((float)(npll)*(float)8.192+225);    //频率单位:KHz	
+#else
+
+#endif
 }
 
 void tea5767_search(int mode)
 {
+#if 1
     tea5767_read();        
     if(mode)
     {
@@ -97,11 +125,15 @@ void tea5767_search(int mode)
     radio_write_data[3]=0x11;
     radio_write_data[4]=0x00;
     tea5767_write();	
+#else
+
+#endif
 }
 
 //自动搜台,mode=1,频率增加搜台; mode=0:频率减小搜台,不过这个好像不能循环搜台
 void tea5767_auto_search(int mode)
 {
+#if 1
     tea5767_read();
     get_tea5767_pll();
     if(mode)
@@ -117,8 +149,10 @@ void tea5767_auto_search(int mode)
     while(!(radio_read_data[0]&0x80))     //搜台成功标志
     {
         tea5767_read();
-    //    disp_freq(9,1);
     }    
+#else
+
+#endif
 }
 
 
