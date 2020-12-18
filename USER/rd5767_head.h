@@ -13,5 +13,12 @@
 #include "key.h"
 #include "iic.h"
 
+/* info */
+typedef struct
+{
+	float cur_freq;			/* µ±Ç°Æµ¶Î */
+	
+}radio_sys_info_t;
+
 #endif
 
