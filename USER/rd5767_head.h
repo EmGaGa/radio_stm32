@@ -2,6 +2,9 @@
 #define __TEA5767_H 	
 #include "stm32f10x.h"
 
+#include <stdlib.h>
+#include <stdio.h>
+
 /* sys */
 #include "rtthread.h"
 /* peripheral */
@@ -16,8 +19,8 @@
 /* info */
 typedef struct
 {
-	float cur_freq;			/* 当前频段 */
-	
+	unsigned int cur_pll;
+	unsigned long cur_freq;			/* 当前频段 */
 }radio_sys_info_t;
 
 #endif

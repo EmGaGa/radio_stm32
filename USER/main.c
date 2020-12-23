@@ -1,7 +1,8 @@
 #include "rd5767_head.h"
 #include "bmp.h"
 
-static radio_sys_info_t *radio_info;
+static radio_sys_info_t radio_info;
+static int redraw = 0;
 
 /* define */
 #define RUN_LED_THREAD_PRIORITY 	7
@@ -30,10 +31,15 @@ static void _run_led_thread_entry(void *parameter);
 static void _scan_key_thread_entry(void *parameter);
 static void _oled_display_thread_entry(void *parameter);
 
-
 static void _radio_info_init(void)
 {
-	memset(radio_info, 0, sizeof(radio_sys_info_t));
+	memset(&radio_info, 0, sizeof(radio_sys_info_t));
+	get_tea5767_pll();
+	get_tea5767_frequency();
+	tea5767_search(1);
+	tea5767_search(0);
+	get_radio_sys_pll(&radio_info);
+	get_radio_sys_frequency(&radio_info);
 }
 
 
@@ -49,10 +55,8 @@ static void _power_on_init(void)
 	OLED_Clear();
 
 	tea5767_init();
-	get_tea5767_pll();
-	get_tea5767_frequency();
 	/* data init */
-//	_radio_info_init();
+	_radio_info_init();
 }
 
 static void _beep_power_on_prompt(void)
@@ -116,6 +120,9 @@ static void _run_led_thread_entry(void *parameter)
 static void _scan_key_thread_entry(void *parameter)
 {
 	u8 key=0;
+	radio_sys_info_t radio_info_old;
+	radio_sys_info_t radio_info_new;
+	
 	rt_kprintf("%s\n", __func__);	
 
 	/* main loop... */
@@ -127,18 +134,19 @@ static void _scan_key_thread_entry(void *parameter)
 			switch(key)
 			{				 
 				case WKUP_PRES:
-					rt_kprintf("%d is down\n", WKUP_PRES);
 					BEEP=!BEEP;
 					break;
 				
 				case KEY1_PRES:
-					rt_kprintf("%d is down\n", KEY1_PRES);
 					tea5767_search(1);
 					break;
 				
 				case KEY0_PRES:
-					rt_kprintf("%d is down\n", KEY0_PRES);
+					get_radio_sys_frequency(&radio_info_old);
 					tea5767_search(0);
+					get_radio_sys_frequency(&radio_info_new);
+					if((radio_info_old.cur_freq/1000 >= 100) && (radio_info_new.cur_freq/1000 < 100))
+						redraw = 1;
 					break;
 			}
 		}
@@ -148,34 +156,33 @@ static void _scan_key_thread_entry(void *parameter)
 
 static void _oled_display_thread_entry(void *parameter)
 {
-//	u8 t=' ';
+	char freq[10];
+	
 	rt_kprintf("%s\n", __func__);
 
+	OLED_Clear();
+	OLED_DrawBMP(0,0,128,8,BMP1);	//图片显示
+	OLED_ShowCHinese(25,0,0);//收
+	OLED_ShowCHinese(55,0,1);//音
+	OLED_ShowCHinese(85,0,2);//机
+	rt_thread_mdelay(200);
 	/* main loop... */
 	while(1)
 	{
-//		OLED_Clear();
-//		OLED_ShowCHinese(0,0,0);//
-//		OLED_ShowCHinese(18,0,1);//
-//		OLED_ShowCHinese(36,0,2);//
-//		OLED_ShowCHinese(54,0,3);//
-//		OLED_ShowCHinese(72,0,4);//
-//		OLED_ShowCHinese(90,0,5);//科
-//		OLED_ShowCHinese(108,0,6);//技
-//		OLED_ShowString(0,3,"0.96' OLED TEST");
-		//OLED_ShowString(8,2,"ZHONGJINGYUAN");  
-		// OLED_ShowString(20,4,"2014/05/01");  
-//		OLED_ShowString(0,6,"ASCII:");  
-//		OLED_ShowString(63,6,"CODE:");  
-//		OLED_ShowChar(48,6,t);			//显示ASCII字符		
-//		t++;
-//		if(t>'~')t=' ';
-//		OLED_ShowNum(103,6,t,3,16);		//显示ASCII字符的码值	 
-		
-//		rt_thread_mdelay(3000);
+		get_radio_sys_frequency(&radio_info);
+		sprintf(freq, "%d.%dMHz", radio_info.cur_freq/1000, (radio_info.cur_freq%1000)/100);
 
-		OLED_DrawBMP(0,0,128,6,BMP1);	//图片显示
-		rt_thread_mdelay(3000);
+		if((redraw == 1) && (radio_info.cur_freq/1000 < 100))
+		{
+			OLED_Clear();
+			OLED_DrawBMP(0,0,128,8,BMP1);	//图片显示
+			OLED_ShowCHinese(25,0,0);//收
+			OLED_ShowCHinese(55,0,1);//音
+			OLED_ShowCHinese(85,0,2);//机
+			redraw = 0;
+		}
+		OLED_ShowString(56,4,(char *)freq);  
+		rt_thread_mdelay(500);
 	}
 }
 

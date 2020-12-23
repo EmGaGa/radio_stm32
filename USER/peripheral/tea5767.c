@@ -13,16 +13,11 @@ static unsigned long frequency = 0;
 
 void tea5767_init(void)
 {
-#if 1
 	IIC_Init();
-#else
-
-#endif
 }
 
 void tea5767_write(void)
 {
-#if 1
     unsigned char i;
     IIC_Start();
     IIC_Send_Byte(0xc0);        //TEA5767写地址
@@ -39,14 +34,10 @@ void tea5767_write(void)
         }
     }
     IIC_Stop(); 
-#else
-
-#endif
 }
 
 void tea5767_read(void)
 {
-#if 1
     unsigned char i;
     unsigned char temp_l,temp_h;
     pll=0;
@@ -67,28 +58,20 @@ void tea5767_read(void)
     temp_h&=0x3f;
     pll=temp_h*256+temp_l+1;
     get_tea5767_frequency();
-#else
-
-#endif
 }
 
 void get_tea5767_pll(void)
 {
-#if 1
     unsigned char hlsi;
     hlsi=radio_write_data[2]&0x10;
     if (hlsi)
         pll=(unsigned int)((float)((frequency+225)*4)/(float)32.768);    //频率单位:k
     else
         pll=(unsigned int)((float)((frequency-225)*4)/(float)32.768);    //频率单位:k	
-#else
-
-#endif
 }
 
 void get_tea5767_frequency(void)
 {
-#if 1
     unsigned char hlsi;
     unsigned int npll=0;
     npll=pll;
@@ -97,14 +80,10 @@ void get_tea5767_frequency(void)
         frequency=(unsigned long)((float)(npll)*(float)8.192-225);    //频率单位:KHz
     else
         frequency=(unsigned long)((float)(npll)*(float)8.192+225);    //频率单位:KHz	
-#else
-
-#endif
 }
 
 void tea5767_search(int mode)
 {
-#if 1
     tea5767_read();        
     if(mode)
     {
@@ -117,7 +96,7 @@ void tea5767_search(int mode)
         frequency-=100;
         if(frequency<min_freq)
             frequency=max_freq;
-    }          
+    }
     get_tea5767_pll();
     radio_write_data[0]=pll/256;
     radio_write_data[1]=pll%256;
@@ -125,15 +104,11 @@ void tea5767_search(int mode)
     radio_write_data[3]=0x11;
     radio_write_data[4]=0x00;
     tea5767_write();	
-#else
-
-#endif
 }
 
 //自动搜台,mode=1,频率增加搜台; mode=0:频率减小搜台,不过这个好像不能循环搜台
 void tea5767_auto_search(int mode)
 {
-#if 1
     tea5767_read();
     get_tea5767_pll();
     if(mode)
@@ -150,9 +125,16 @@ void tea5767_auto_search(int mode)
     {
         tea5767_read();
     }    
-#else
+}
 
-#endif
+void get_radio_sys_pll(radio_sys_info_t *radio_info)
+{
+	radio_info->cur_pll = pll;
+}
+
+void get_radio_sys_frequency(radio_sys_info_t *radio_info)
+{
+	radio_info->cur_freq = frequency;
 }
 
 
