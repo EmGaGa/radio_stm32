@@ -138,7 +138,11 @@ static void _scan_key_thread_entry(void *parameter)
 					break;
 				
 				case KEY1_PRES:
+					get_radio_sys_frequency(&radio_info_old);
 					tea5767_search(1);
+					get_radio_sys_frequency(&radio_info_new);
+					if((radio_info_old.cur_freq/1000 >= 100) && (radio_info_new.cur_freq/1000 < 100))
+						redraw = 1;
 					break;
 				
 				case KEY0_PRES:
